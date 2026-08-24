@@ -1,0 +1,12 @@
+.gradle/
+.tools/
+.cxx/
+local.properties
+app/build/
+build/
+*.apk
+*.aab
+*.jks
+*.keystore
+*.gguf
+*.gguf.part

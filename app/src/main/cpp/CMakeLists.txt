@@ -1,0 +1,25 @@
+cmake_minimum_required(VERSION 3.22.1)
+project(infinite_rpg_llama LANGUAGES C CXX)
+
+if(ANDROID)
+    set(ANDROID_SUPPORT_FLEXIBLE_PAGE_SIZES ON CACHE BOOL "" FORCE)
+endif()
+
+set(LLAMA_BUILD_COMMON ON CACHE BOOL "" FORCE)
+set(LLAMA_BUILD_TESTS OFF CACHE BOOL "" FORCE)
+set(LLAMA_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+set(LLAMA_BUILD_SERVER OFF CACHE BOOL "" FORCE)
+set(LLAMA_CURL OFF CACHE BOOL "" FORCE)
+set(GGML_OPENMP OFF CACHE BOOL "" FORCE)
+set(GGML_NATIVE OFF CACHE BOOL "" FORCE)
+set(GGML_LLAMAFILE OFF CACHE BOOL "" FORCE)
+
+if(NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/third_party/llama.cpp/CMakeLists.txt")
+    message(FATAL_ERROR "llama.cpp is missing. Run ./doit.sh before building.")
+endif()
+
+add_subdirectory(third_party/llama.cpp llama-build EXCLUDE_FROM_ALL)
+add_library(infinite_rpg_llama SHARED native_llama.cpp)
+target_include_directories(infinite_rpg_llama PRIVATE third_party/llama.cpp/include third_party/llama.cpp/ggml/include)
+target_link_libraries(infinite_rpg_llama PRIVATE llama android log)
+target_compile_options(infinite_rpg_llama PRIVATE -O3 -ffast-math)
