@@ -27,7 +27,7 @@ grep -q 'Java_app_infiniterpg_ai_NativeLlama_load' app/src/main/cpp/native_llama
 test "$(find app/src/main/java/app/infiniterpg -name '*.java' | wc -l)" -ge 20
 for asset in app/src/main/res/drawable-nodpi/*.png; do test -s "$asset"; done
 
-bash -n doit.sh
+bash -n install.sh
 bash -n build-release.sh
 
 echo "Infinite RPG source contract verified."
