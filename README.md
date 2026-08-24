@@ -48,11 +48,11 @@ Infinite RPG is a native, offline-first Android 2D exploration/crafting RPG whos
 On a 64-bit Linux machine with Java 17, `git`, `curl`, and `unzip`:
 
 ```bash
-chmod +x doit.sh build-release.sh
-./doit.sh
+chmod +x install.sh build-release.sh
+./install.sh
 ```
 
-`doit.sh` downloads an isolated Android SDK/NDK, pinned llama.cpp source, and Gradle into `.tools/`; it does not modify the system installation. It builds:
+`install.sh` downloads an isolated Android SDK/NDK, pinned llama.cpp source, and Gradle into `.tools/`; it does not modify the system installation. It builds:
 
 ```text
 Infinite-RPG-debug.apk
@@ -98,3 +98,11 @@ Generation and gameplay stay on the device. Network requests are limited to user
 ## Support
 
 Donations can fund additional production time and may request priority for a compatible direction through the funded-direction issue template using a public transaction hash. They do not guarantee implementation or purchase ownership, returns, deadlines, or support. See [SUPPORT.md](SUPPORT.md) and verify the asset and exact network before sending.
+
+
+Run the installed application or command-line entry point with:
+
+```sh
+chmod +x run.sh
+./run.sh --help
+```
