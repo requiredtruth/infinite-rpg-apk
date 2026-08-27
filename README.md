@@ -48,11 +48,11 @@ Infinite RPG is a native, offline-first Android 2D exploration/crafting RPG whos
 On a 64-bit Linux machine with Java 17, `git`, `curl`, and `unzip`:
 
 ```bash
-chmod +x doit.sh build-release.sh
-./doit.sh
+chmod +x install.sh run.sh cli.sh android-build.sh build-release.sh
+./run.sh
 ```
 
-`doit.sh` downloads an isolated Android SDK/NDK, pinned llama.cpp source, and Gradle into `.tools/`; it does not modify the system installation. It builds:
+The PySide6 build manager runs installation automatically. Choose **Build APK**, or run `./cli.sh build`; `android-build.sh` downloads an isolated Android SDK/NDK, pinned llama.cpp source, and Gradle into `.tools/` without modifying the system installation. It builds:
 
 ```text
 Infinite-RPG-debug.apk
@@ -98,3 +98,8 @@ Generation and gameplay stay on the device. Network requests are limited to user
 ## Support
 
 Donations can fund additional production time and may request priority for a compatible direction through the funded-direction issue template using a public transaction hash. They do not guarantee implementation or purchase ownership, returns, deadlines, or support. See [SUPPORT.md](SUPPORT.md) and verify the asset and exact network before sending.
+
+
+## Standard launcher
+
+`./run.sh` is the normal desktop entry point. It auto-runs `./install.sh` when needed and opens a PySide6 build/status console with live logs and actions for validation, repair, stopping jobs, and APK builds. Use `./cli.sh` for terminal-only status, tests, debug builds, or release builds. APK deliverables remain published through GitHub Releases.
